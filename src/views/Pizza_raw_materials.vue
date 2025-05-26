@@ -1,59 +1,90 @@
 <template>
-  <div class="container text-start">
-    <h1 class="text-primary fw-bold">Materias Primas de Pizza</h1>
-    <div class="card">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <span class="fw-bold">Listado</span>
-        <router-link :to="{ name: 'PizzaRawMaterialCreate' }" class="btn btn-primary">
-          Crear
-        </router-link>
-      </div>
-      <div class="card-body">
-        <table class="table table-hover table-bordered">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Pizza</th>
-              <th>Materia Prima</th>
-              <th>Cantidad</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(pizzaRM, index) in pizzaRawMaterials" :key="pizzaRM.id">
-              <td>{{ index + 1 }}</td>
-              <td>{{ pizzaRM.pizza.name }}</td>
-              <td>{{ pizzaRM.raw_material.name }}</td>
-              <td>{{ pizzaRM.quantity }}</td>
-              <td>
-                <router-link :to="{ name: 'PizzaRawMaterialEdit', params: { id: pizzaRM.id } }" class="btn btn-warning btn-sm">Editar</router-link>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+  <div class="container">
+    <h1 class="text-start">Relación Pizza - Materia Prima
+      <button @click="newRelation()" class="btn btn-success mx-2">
+        <font-awesome-icon icon="plus" />
+      </button>
+    </h1>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Pizza</th>
+          <th>Materia Prima</th>
+          <th>Cantidad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(relation, index) in relations" :key="relation.id">
+          <th scope="row">{{ index + 1 }}</th>
+          <td>{{ relation.pizza_name }}</td>
+          <td>{{ relation.raw_material_name }}</td>
+          <td>{{ relation.quantity }}</td>
+          <td>
+            <button @click="editRelation(relation.id)" class="btn btn-warning mx-2">
+              <font-awesome-icon icon="pencil" />
+            </button>
+            <button @click="deleteRelation(relation.id)" class="btn btn-danger mx-2">
+              <font-awesome-icon icon="trash" />
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export default {
   name: 'PizzaRawMaterialIndex',
   data() {
     return {
-      pizzaRawMaterials: []
+      relations: []
+    }
+  },
+  methods: {
+    newRelation() {
+      this.$router.push({ name: 'NewPizzaRawMaterial' })
+    },
+    editRelation(id) {
+      this.$router.push({ name: 'EditPizzaRawMaterial', params: { id } })
+    },
+    deleteRelation(id) {
+      Swal.fire({
+        title: `¿Desea eliminar la relación con ID ${id}?`,
+        showCancelButton: true,
+        confirmButtonText: 'Eliminar',
+        cancelButtonText: 'Cancelar',
+        icon: 'warning'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios.delete(`http://127.0.0.1:8000/api/pizza_raw_material/${id}`)
+            .then(response => {
+              if (response.data.success) {
+                Swal.fire('¡Eliminado!', '', 'success')
+                this.relations = response.data.relations
+              }
+            })
+            .catch(() => {
+              Swal.fire('Error', 'No se pudo eliminar.', 'error')
+            })
+        }
+      })
     }
   },
   mounted() {
-    this.loadPizzaRawMaterials()
-  },
-  methods: {
-    async loadPizzaRawMaterials() {
-      const res = await axios.get('http://127.0.0.1:8000/api/pizza_raw_materials')
-      this.pizzaRawMaterials = res.data.pizza_raw_materials
-    }
+    axios.get('http://127.0.0.1:8000/api/pizza_raw_material')
+      .then(response => {
+        this.relations = response.data.relations
+      })
+      .catch(() => {
+        Swal.fire('Error', 'No se pudo cargar la lista.', 'error')
+      })
   }
 }
 </script>
