@@ -71,7 +71,7 @@ export default {
   },
   methods: {
     cancel() {
-      this.$router.push({ name: 'PurchasesIndex' })
+      this.$router.push({ name: 'Purchases' })
     },
     async loadSuppliers() {
       try {
@@ -83,7 +83,7 @@ export default {
     },
     async loadRawMaterials() {
       try {
-        const res = await axios.get('http://127.0.0.1:8000/api/raw_materials')
+        const res = await axios.get('http://127.0.0.1:8000/api/raw-materials')
         this.rawMaterials = res.data.raw_materials
       } catch {
         Swal.fire('Error', 'No se pudieron cargar las materias primas.', 'error')
@@ -108,7 +108,7 @@ export default {
           this.purchase
         )
         if (res.status === 200) {
-          this.$router.push({ name: 'PurchasesIndex' })
+          this.$router.push({ name: 'Purchases' })
           Swal.fire({
             position: 'top-end',
             icon: 'success',

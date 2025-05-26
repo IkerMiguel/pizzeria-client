@@ -20,7 +20,7 @@
         <tr v-for="(item, index) in orderExtraIngredients" :key="item.id">
           <th scope="row">{{ index + 1 }}</th>
           <td>{{ item.order_id }}</td>
-          <td>{{ item.extra_ingredient_id }}</td>
+          <td>{{ item.ingredient_name }}</td>
           <td>{{ item.quantity }}</td>
           <td>
             <button @click="deleteOrderExtraIngredient(item.id)" class="btn btn-danger mx-2">
@@ -55,11 +55,11 @@ export default {
         confirmButtonText: 'Eliminar',
       }).then((result) => {
         if (result.isConfirmed) {
-          axios.delete(`http://127.0.0.1:8000/api/order_extra_ingredients/${id}`)
+          axios.delete(`http://127.0.0.1:8000/api/order-extra-ingredients/${id}`)
             .then(response => {
               if (response.data.success) {
                 Swal.fire('¡Eliminado!', '', 'success')
-                this.orderExtraIngredients = response.data.order_extra_ingredients
+                this.orderExtraIngredients = response.data.items
               }
             })
         }
@@ -74,8 +74,13 @@ export default {
   },
   mounted() {
     axios
-      .get('http://127.0.0.1:8000/api/order_extra_ingredients')
-      .then(response => (this.orderExtraIngredients = response.data.order_extra_ingredients))
+      .get('http://127.0.0.1:8000/api/order-extra-ingredients')
+      .then(response => {
+        this.orderExtraIngredients = response.data.items
+      })
+      .catch(error => {
+        console.error("Error al cargar datos:", error)
+      })
   }
 }
 </script>

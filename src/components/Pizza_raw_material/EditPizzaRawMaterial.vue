@@ -60,16 +60,16 @@ export default {
   },
   methods: {
     cancel() {
-      this.$router.push({ name: 'PizzaRawMaterialIndex' })
+      this.$router.push({ name: 'Pizza_raw_materialss' })
     },
     async updateRelation() {
       try {
         const res = await axios.put(
-          `http://127.0.0.1:8000/api/pizza_raw_material/${this.$route.params.id}`,
+          `http://127.0.0.1:8000/api/pizza-raw-materials/${this.$route.params.id}`,
           this.relation
         )
         if (res.status === 200) {
-          this.$router.push({ name: 'PizzaRawMaterialIndex' })
+          this.$router.push({ name: 'Pizza_raw_materials' })
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -84,11 +84,11 @@ export default {
     },
     async loadData() {
       const [relationRes, pizzasRes, materialsRes] = await Promise.all([
-        axios.get(`http://127.0.0.1:8000/api/pizza_raw_material/${this.$route.params.id}`),
+        axios.get(`http://127.0.0.1:8000/api/pizza-raw-materials/${this.$route.params.id}`),
         axios.get('http://127.0.0.1:8000/api/pizzas'),
-        axios.get('http://127.0.0.1:8000/api/raw_materials')
+        axios.get('http://127.0.0.1:8000/api/raw-materials')
       ])
-      this.relation = relationRes.data.relation
+      this.relation = relationRes.data.item 
       this.pizzas = pizzasRes.data.pizzas
       this.rawMaterials = materialsRes.data.raw_materials
     }

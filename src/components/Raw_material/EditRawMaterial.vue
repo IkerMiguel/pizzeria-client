@@ -13,18 +13,13 @@
           </div>
 
           <div class="mb-3">
-            <label for="description" class="form-label">Descripción:</label>
-            <textarea class="form-control" id="description" v-model="rawMaterial.description"></textarea>
-          </div>
-
-          <div class="mb-3">
             <label for="unit" class="form-label">Unidad de Medida:</label>
             <input type="text" class="form-control" id="unit" v-model="rawMaterial.unit" required />
           </div>
 
           <div class="mb-3">
             <label for="stock" class="form-label">Stock:</label>
-            <input type="number" step="0.01" class="form-control" id="stock" v-model="rawMaterial.stock" required />
+            <input type="number" step="0.01" class="form-control" id="stock" v-model="rawMaterial.current_stock" required />
           </div>
 
           <button type="submit" class="btn btn-primary">Actualizar</button>
@@ -45,24 +40,23 @@ export default {
     return {
       rawMaterial: {
         name: '',
-        description: '',
         unit: '',
-        stock: ''
+        current_stock: ''
       }
     }
   },
   methods: {
     cancel() {
-      this.$router.push({ name: 'RawMaterialsIndex' })
+      this.$router.push({ name: 'Raw_material' })
     },
     async updateRawMaterial() {
       try {
         const res = await axios.put(
-          `http://127.0.0.1:8000/api/raw_materials/${this.$route.params.id}`,
+          `http://127.0.0.1:8000/api/raw-materials/${this.$route.params.id}`,
           this.rawMaterial
         )
         if (res.status === 200) {
-          this.$router.push({ name: 'RawMaterialsIndex' })
+          this.$router.push({ name: 'Raw_material' })
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -77,7 +71,7 @@ export default {
     },
     async loadRawMaterial() {
       try {
-        const res = await axios.get(`http://127.0.0.1:8000/api/raw_materials/${this.$route.params.id}`)
+        const res = await axios.get(`http://127.0.0.1:8000/api/raw-materials/${this.$route.params.id}`)
         this.rawMaterial = res.data.raw_material
       } catch {
         Swal.fire('Error', 'No se pudo cargar la materia prima.', 'error')

@@ -20,7 +20,7 @@
         <tr v-for="(relation, index) in relations" :key="relation.id">
           <th scope="row">{{ index + 1 }}</th>
           <td>{{ relation.pizza_name }}</td>
-          <td>{{ relation.raw_material_name }}</td>
+          <td>{{ relation.material_name }}</td>
           <td>{{ relation.quantity }}</td>
           <td>
             <button @click="editRelation(relation.id)" class="btn btn-warning mx-2">
@@ -63,11 +63,11 @@ export default {
         icon: 'warning'
       }).then((result) => {
         if (result.isConfirmed) {
-          axios.delete(`http://127.0.0.1:8000/api/pizza_raw_material/${id}`)
+          axios.delete(`http://127.0.0.1:8000/api/pizza-raw-materials/${id}`)
             .then(response => {
               if (response.data.success) {
                 Swal.fire('¡Eliminado!', '', 'success')
-                this.relations = response.data.relations
+                this.relations = response.data.items
               }
             })
             .catch(() => {
@@ -78,9 +78,9 @@ export default {
     }
   },
   mounted() {
-    axios.get('http://127.0.0.1:8000/api/pizza_raw_material')
+    axios.get('http://127.0.0.1:8000/api/pizza-raw-materials')
       .then(response => {
-        this.relations = response.data.relations
+        this.relations = response.data.items
       })
       .catch(() => {
         Swal.fire('Error', 'No se pudo cargar la lista.', 'error')
