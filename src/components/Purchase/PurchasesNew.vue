@@ -29,21 +29,41 @@
 
           <div class="mb-3">
             <label for="quantity" class="form-label">Cantidad:</label>
-            <input type="number" step="0.01" class="form-control" id="quantity" v-model="purchase.quantity" required />
+            <input
+              type="number"
+              step="0.01"
+              class="form-control"
+              id="quantity"
+              v-model="purchase.quantity"
+              required
+            />
           </div>
 
           <div class="mb-3">
             <label for="purchase_price" class="form-label">Precio de Compra:</label>
-            <input type="number" step="0.01" class="form-control" id="purchase_price" v-model="purchase.purchase_price" required />
+            <input
+              type="number"
+              step="0.01"
+              class="form-control"
+              id="purchase_price"
+              v-model="purchase.purchase_price"
+              required
+            />
           </div>
 
           <div class="mb-3">
             <label for="purchase_date" class="form-label">Fecha de Compra:</label>
-            <input type="date" class="form-control" id="purchase_date" v-model="purchase.purchase_date" required />
+            <input
+              type="date"
+              class="form-control"
+              id="purchase_date"
+              v-model="purchase.purchase_date"
+              required
+            />
           </div>
 
           <button type="submit" class="btn btn-primary">Guardar</button>
-          <button class="btn btn-secondary mx-2" @click="cancel">Cancelar</button>
+          <button type="button" class="btn btn-secondary mx-2" @click="cancel">Cancelar</button>
         </form>
       </div>
     </div>
@@ -71,29 +91,30 @@ export default {
   },
   methods: {
     cancel() {
-      this.$router.push({ name: 'PurchasesIndex' })
+      this.$router.push({ name: 'Purchases' })
     },
     async loadSuppliers() {
       try {
         const res = await axios.get('http://127.0.0.1:8000/api/suppliers')
         this.suppliers = res.data.suppliers
-      } catch {
+      } catch (error) {
+        console.error(error)
         Swal.fire('Error', 'No se pudieron cargar los proveedores.', 'error')
       }
     },
     async loadRawMaterials() {
       try {
-        const res = await axios.get('http://127.0.0.1:8000/api/raw_materials')
+        const res = await axios.get('http://127.0.0.1:8000/api/raw-materials')
         this.rawMaterials = res.data.raw_materials
-      } catch {
+      } catch (error) {
+        console.error(error)
         Swal.fire('Error', 'No se pudieron cargar las materias primas.', 'error')
       }
     },
     async savePurchase() {
       try {
         const res = await axios.post('http://127.0.0.1:8000/api/purchases', this.purchase)
-        if (res.status === 200) {
-          this.$router.push({ name: 'PurchasesIndex' })
+        if (res.status === 200 || res.status === 201) {
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -101,8 +122,12 @@ export default {
             showConfirmButton: false,
             timer: 2000
           })
+          this.$router.push({ name: 'Purchases' })
+        } else {
+          Swal.fire('Error', 'La respuesta del servidor fue inesperada.', 'error')
         }
-      } catch {
+      } catch (error) {
+        console.error(error)
         Swal.fire('Error', 'No se pudo registrar la compra.', 'error')
       }
     }

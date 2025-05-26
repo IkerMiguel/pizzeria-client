@@ -13,18 +13,13 @@
           </div>
 
           <div class="mb-3">
-            <label for="description" class="form-label">Descripción:</label>
-            <textarea class="form-control" id="description" v-model="rawMaterial.description"></textarea>
-          </div>
-
-          <div class="mb-3">
             <label for="unit" class="form-label">Unidad de Medida:</label>
             <input type="text" class="form-control" id="unit" v-model="rawMaterial.unit" required />
           </div>
 
           <div class="mb-3">
             <label for="stock" class="form-label">Stock Inicial:</label>
-            <input type="number" step="0.01" class="form-control" id="stock" v-model="rawMaterial.stock" required />
+            <input type="number" step="0.01" class="form-control" id="stock" v-model="rawMaterial.current_stock" required />
           </div>
 
           <button type="submit" class="btn btn-primary">Guardar</button>
@@ -45,21 +40,20 @@ export default {
     return {
       rawMaterial: {
         name: '',
-        description: '',
         unit: '',
-        stock: ''
+        current_stock: ''
       }
     }
   },
   methods: {
     cancel() {
-      this.$router.push({ name: 'RawMaterialsIndex' })
+      this.$router.push({ name: 'Raw_material' })
     },
     async saveRawMaterial() {
       try {
-        const res = await axios.post('http://127.0.0.1:8000/api/raw_materials', this.rawMaterial)
+        const res = await axios.post('http://127.0.0.1:8000/api/raw-materials', this.rawMaterial)
         if (res.status === 200) {
-          this.$router.push({ name: 'RawMaterialsIndex' })
+          this.$router.push({ name: 'Raw_material' })
           Swal.fire({
             position: 'top-end',
             icon: 'success',

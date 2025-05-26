@@ -24,9 +24,9 @@
           <th scope="row">{{ index + 1 }}</th>
           <td>{{ purchase.supplier_name }}</td>
           <td>{{ purchase.raw_material_name }}</td>
-          <td>{{ purchase.quantity.toFixed(2) }}</td>
-          <td>{{ purchase.purchase_price.toFixed(2) }}</td>
-          <td>{{ formatDate(purchase.purchase_date) }}</td>
+          <td>{{ purchase.quantity }}</td>
+          <td>{{ purchase.purchase_price }}</td>
+          <td>{{ purchase.purchase_date }}</td>
           <td>
             <button @click="editPurchase(purchase.id)" class="btn btn-warning mx-2">
               <font-awesome-icon icon="pencil" />

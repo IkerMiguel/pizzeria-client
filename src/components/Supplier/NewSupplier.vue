@@ -55,7 +55,7 @@ export default {
     async saveSupplier() {
       const res = await axios.post('http://127.0.0.1:8000/api/suppliers', this.supplier)
       if (res.status === 200) {
-        this.$router.push({ name: 'Proveedores' })
+        this.$router.push({ name: 'Suppliers' })
         Swal.fire({
           position: 'top-end',
           icon: 'success',

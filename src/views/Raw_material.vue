@@ -63,7 +63,7 @@ export default {
         icon: 'warning'
       }).then((result) => {
         if (result.isConfirmed) {
-          axios.delete(`http://127.0.0.1:8000/api/raw_materials/${id}`)
+          axios.delete(`http://127.0.0.1:8000/api/raw-materials/${id}`)
             .then(response => {
               if (response.data.success) {
                 Swal.fire('¡Eliminado!', '', 'success')
@@ -78,7 +78,7 @@ export default {
     }
   },
   mounted() {
-    axios.get('http://127.0.0.1:8000/api/raw_materials')
+    axios.get('http://127.0.0.1:8000/api/raw-materials')
       .then(response => {
         this.rawMaterials = response.data.raw_materials
       })
