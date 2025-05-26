@@ -64,10 +64,10 @@ export default {
       })
     },
     editSupplier(id) {
-      this.$router.push({ name: 'EditarProveedor', params: { id: `${id}` } })
+      this.$router.push({ name: 'EditSupplier', params: { id: `${id}` } })
     },
     newSupplier() {
-      this.$router.push({ name: 'NuevoProveedor' })
+      this.$router.push({ name: 'NewSupplier' })
     }
   },
   mounted() {
