@@ -70,12 +70,12 @@ export default {
   },
   methods: {
     cancel() {
-      this.$router.push({ name: 'OrderExtraIngredientIndex' })
+      this.$router.push({ name: 'Order_extra_ingredients' })
     },
     async saveOrderExtraIngredient() {
-      const res = await axios.post('http://127.0.0.1:8000/api/order_extra_ingredients', this.orderExtraIngredient)
+      const res = await axios.post('http://127.0.0.1:8000/api/order-extra-ingredients', this.orderExtraIngredient)
       if (res.status === 200) {
-        this.$router.push({ name: 'OrderExtraIngredientIndex' })
+        this.$router.push({ name: 'Order_extra_ingredients' })
         Swal.fire({
           position: 'top-end',
           icon: 'success',
@@ -91,7 +91,7 @@ export default {
       .then(response => {
         this.orders = response.data.orders
       })
-    axios.get('http://127.0.0.1:8000/api/extra_ingredients')
+    axios.get('http://127.0.0.1:8000/api/extra-ingredients')
       .then(response => {
         this.extraIngredients = response.data.extra_ingredients
       })

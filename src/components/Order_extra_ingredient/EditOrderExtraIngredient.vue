@@ -70,11 +70,11 @@ export default {
   },
   methods: {
     cancel() {
-      this.$router.push({ name: 'OrderExtraIngredientIndex' })
+      this.$router.push({ name: 'Order_extra_ingredients' })
     },
     async updateOrderExtraIngredient() {
       const res = await axios.put(
-        `http://127.0.0.1:8000/api/order_extra_ingredients/${this.orderExtraIngredient.id}`,
+        `http://127.0.0.1:8000/api/order-extra-ingredients/${this.orderExtraIngredient.id}`,
         this.orderExtraIngredient
       )
       if (res.status === 200) {
@@ -85,7 +85,7 @@ export default {
           showConfirmButton: false,
           timer: 2000
         })
-        this.$router.push({ name: 'OrderExtraIngredientIndex' })
+        this.$router.push({ name: 'Order_extra_ingredients' })
       }
     },
     async loadData() {
@@ -93,12 +93,12 @@ export default {
       try {
         const [ordersRes, ingredientsRes, recordRes] = await Promise.all([
           axios.get('http://127.0.0.1:8000/api/orders'),
-          axios.get('http://127.0.0.1:8000/api/extra_ingredients'),
-          axios.get(`http://127.0.0.1:8000/api/order_extra_ingredients/${id}`)
+          axios.get('http://127.0.0.1:8000/api/extra-ingredients'),
+          axios.get(`http://127.0.0.1:8000/api/order-extra-ingredients/${id}`)
         ])
         this.orders = ordersRes.data.orders
         this.extraIngredients = ingredientsRes.data.extra_ingredients
-        this.orderExtraIngredient = recordRes.data.order_extra_ingredient
+        this.orderExtraIngredient = recordRes.data.item 
       } catch (error) {
         console.error('Error cargando datos:', error)
       }
