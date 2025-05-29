@@ -19,6 +19,7 @@ import Order_extra_ingredients from '../views/Order_extra_ingredients.vue'
 import EditOrderExtraIngredient from '../components/Order_extra_ingredient/EditOrderExtraIngredient.vue'
 import NewOrderExtraIngredient from '../components/Order_extra_ingredient/NewOrderExtraIngredient.vue'
 import Ingredient from '@/views/Ingredient.vue'
+import EditIngredient from '@/components/Ingredient/EditIngredient.vue'
 
 const routes = [
   {
@@ -130,9 +131,14 @@ const routes = [
   component: NewOrderExtraIngredient
 },
 {
-  path: '/Ingredients',
+  path: '/ingredients',
   name: 'Ingredient',
   component: Ingredient
+},
+{
+  path: '/editIngredient/:id',
+  name: 'EditIngredient',
+  component: EditIngredient
 }
 
 ]
