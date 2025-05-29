@@ -27,6 +27,9 @@ import NewEmployee from '../components/Employee/NewEmployee.vue'
 import Pizzas from '../views/Pizzas.vue'
 import EditPizza from '../components/Pizza/EditPizza.vue' 
 import NewPizza from '../components/Pizza/NewPizza.vue'
+import Users from '../views/Users.vue'
+import EditUser from '../components/User/EditUser.vue'
+import NewUser from '../components/User/NewUser.vue'
 
 const routes = [
   {
@@ -181,8 +184,22 @@ const routes = [
   path: '/add-pizza',
   name: 'NewPizza',
   component: NewPizza
-}
-
+},
+  {
+    path: '/users',
+    name: 'Users',
+    component: Users
+  },
+  {
+    path: '/editar-user/:id',
+    name: 'EditarUser',
+    component: EditUser
+  },
+  {
+    path: '/add-user/',
+    name: 'NewUser',
+    component: NewUser
+  }
 
 ]
 
