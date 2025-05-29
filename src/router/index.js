@@ -21,6 +21,9 @@ import NewOrderExtraIngredient from '../components/Order_extra_ingredient/NewOrd
 import Clients from '../views/Clients.vue'
 import EditClient from '../components/Client/EditClient.vue'  
 import NewClient from '../components/Client/NewClient.vue'
+import Employees from '../views/Employees.vue'
+import EditEmployee from '../components/Employee/EditEmployee.vue'
+import NewEmployee from '../components/Employee/NewEmployee.vue'
 
 
 const routes = [
@@ -146,7 +149,22 @@ const routes = [
   path: '/add-cliente',
   name: 'NewClient',
   component: NewClient
-}
+},
+ {
+  path: '/employees',
+  name: 'Employees',
+  component: Employees
+  },
+  {
+    path: '/editar-empleado/:id',
+    name: 'EditEmployee',
+    component: EditEmployee
+  },
+  {
+    path: '/add-empleado',
+    name: 'NewEmployee',
+    component: NewEmployee
+  }
 
 
 ]
