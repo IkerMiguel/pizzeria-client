@@ -18,6 +18,7 @@ import NewPizzaRawMaterial from '../components/Pizza_raw_material/NewPizzaRawMat
 import Order_extra_ingredients from '../views/Order_extra_ingredients.vue'
 import EditOrderExtraIngredient from '../components/Order_extra_ingredient/EditOrderExtraIngredient.vue'
 import NewOrderExtraIngredient from '../components/Order_extra_ingredient/NewOrderExtraIngredient.vue'
+import Ingredient from '@/views/Ingredient.vue'
 import Clients from '../views/Clients.vue'
 import EditClient from '../components/Client/EditClient.vue'  
 import NewClient from '../components/Client/NewClient.vue'
@@ -141,6 +142,10 @@ const routes = [
   component: NewOrderExtraIngredient
 },
 {
+  path: '/Ingredients',
+  name: 'Ingredient',
+  component: Ingredient
+}
   path: '/clients',
   name: 'Clients',
   component: Clients
