@@ -86,4 +86,18 @@ export default {
             position: 'top-end',
             icon: 'success',
             title: 'Empleado registrado exitosamente',
-            showConfirmButton: fa
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+      } catch (error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al registrar empleado',
+          text: error.response?.data?.message || 'Ocurrió un error inesperado.'
+        })
+      }
+    }
+  }
+}
+</script>
