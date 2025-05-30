@@ -1,25 +1,18 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <!-- Branches -->
-    <router-link to="/branches">Sucursales</router-link> |
-
-    <!-- Suppliers -->
-    <router-link to="/suppliers">Proveedores</router-link> |
-
-    <!-- Raw Materials -->
-    <router-link to="/raw-materials">Materias Primas</router-link> |
-
-    <!-- Purchases -->
-    <router-link to="/purchases">Compras</router-link> |
-
-    <!-- Pizza Raw Material -->
-    <router-link to="/pizza-raw-material">Pizza Materia Prima</router-link> |
-
-    <!-- Order Extra Ingredient -->
-    <router-link to="/order-extra-ingredient">Pedido Ingrediente Extra</router-link> |
-  </nav>
+  <router-link to="/">Home</router-link> |
+  <router-link to="/about">About</router-link> |
+  <router-link to="/branches">Sucursales</router-link>
+  <router-link to="/suppliers">Proveedores</router-link> |
+  <router-link to="/raw-materials">Materias Primas</router-link> |
+  <br>
+  <router-link to="/purchases">Compras</router-link> |
+  <router-link to="/pizza-raw-material">Pizza Materia Prima</router-link> |
+  <router-link to="/order-extra-ingredient">Pedido Ingrediente Extra</router-link> |
+  <router-link to="/Ingredients">Ingredientes</router-link> |
+  <br>
+  
+</nav>
   <router-view/>
 </template>
 
