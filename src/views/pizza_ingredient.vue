@@ -32,9 +32,6 @@
             </button>
           </td>
         </tr>
-        <tr v-if="pizzaIngredients.length === 0">
-          <td colspan="5" class="text-center">No hay registros</td>
-        </tr>
       </tbody>
     </table>
   </div>
