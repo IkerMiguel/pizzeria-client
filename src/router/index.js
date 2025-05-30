@@ -20,6 +20,16 @@ import EditOrderExtraIngredient from '../components/Order_extra_ingredient/EditO
 import NewOrderExtraIngredient from '../components/Order_extra_ingredient/NewOrderExtraIngredient.vue'
 import Ingredient from '@/views/Ingredient.vue'
 import EditIngredient from '@/components/Ingredient/EditIngredient.vue'
+import Clients from '../views/Clients.vue'
+import EditClient from '../components/Client/EditClient.vue'
+import NewClient from '../components/Client/NewClient.vue'
+import Employees from '../views/Employees.vue'
+import EditEmployee from '../components/Employee/EditEmployee.vue'
+import NewEmployee from '../components/Employee/NewEmployee.vue'
+import Pizzas from '../views/Pizzas.vue'
+import EditPizza from '../components/Pizza/EditPizza.vue'
+import NewPizza from '../components/Pizza/NewPizza.vue'
+import Users from '../views/Users.vue'
 
 const routes = [
   {
@@ -36,110 +46,170 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
   {
-  path: '/branches',
-  name: 'Branches',
-  component: Branches
-},
-{
-  path: '/editar-sucursal/:id',
-  name: 'EditBranch',
-  component: EditBranch
-},
-{
-  path: '/add-sucursal',
-  name: 'NewBranch',
-  component: NewBranch
-},
+    path: '/branches',
+    name: 'Branches',
+    component: Branches
+  },
+  {
+    path: '/editar-sucursal/:id',
+    name: 'EditBranch',
+    component: EditBranch
+  },
+  {
+    path: '/add-sucursal',
+    name: 'NewBranch',
+    component: NewBranch
+  },
 
-{
-  path: '/suppliers',
-  name: 'Suppliers',
-  component: Suppliers
-},
-{
-  path: '/editar-proveedor/:id',
-  name: 'EditSupplier',
-  component: EditSupplier
-},
-{
-  path: '/add-proveedor',
-  name: 'NewSupplier',
-  component: NewSupplier
-},
+  {
+    path: '/suppliers',
+    name: 'Suppliers',
+    component: Suppliers
+  },
+  {
+    path: '/editar-proveedor/:id',
+    name: 'EditSupplier',
+    component: EditSupplier
+  },
+  {
+    path: '/add-proveedor',
+    name: 'NewSupplier',
+    component: NewSupplier
+  },
 
-{
-  path: '/raw-materials',
-  name: 'Raw_material',
-  component: Raw_material
-},
-{
-  path: '/editar-materia-prima/:id',
-  name: 'EditRawMaterial',
-  component: EditRawMaterial
-},
-{
-  path: '/add-materia-prima',
-  name: 'NewRawMaterial',
-  component: NewRawMaterial
-},
+  {
+    path: '/raw-materials',
+    name: 'Raw_material',
+    component: Raw_material
+  },
+  {
+    path: '/editar-materia-prima/:id',
+    name: 'EditRawMaterial',
+    component: EditRawMaterial
+  },
+  {
+    path: '/add-materia-prima',
+    name: 'NewRawMaterial',
+    component: NewRawMaterial
+  },
 
-{
-  path: '/purchases',
-  name: 'Purchases',
-  component: Purchases
-},
-{
-  path: '/editar-compra/:id',
-  name: 'PurchasesEdit',
-  component: PurchasesEdit
-},
-{
-  path: '/add-compra',
-  name: 'PurchasesNew',
-  component: PurchasesNew
-},
+  {
+    path: '/purchases',
+    name: 'Purchases',
+    component: Purchases
+  },
+  {
+    path: '/editar-compra/:id',
+    name: 'PurchasesEdit',
+    component: PurchasesEdit
+  },
+  {
+    path: '/add-compra',
+    name: 'PurchasesNew',
+    component: PurchasesNew
+  },
 
-{
-  path: '/pizza-raw-material',
-  name: 'Pizza_raw_materials',
-  component: Pizza_raw_materials
-},
-{
-  path: '/editar-pizza-materia-prima/:id',
-  name: 'EditPizzaRawMaterial',
-  component: EditPizzaRawMaterial
-},
-{
-  path: '/add-pizza-materia-prima',
-  name: 'NewPizzaRawMaterial',
-  component: NewPizzaRawMaterial
-},
+  {
+    path: '/pizza-raw-material',
+    name: 'Pizza_raw_materials',
+    component: Pizza_raw_materials
+  },
+  {
+    path: '/editar-pizza-materia-prima/:id',
+    name: 'EditPizzaRawMaterial',
+    component: EditPizzaRawMaterial
+  },
+  {
+    path: '/add-pizza-materia-prima',
+    name: 'NewPizzaRawMaterial',
+    component: NewPizzaRawMaterial
+  },
 
-{
-  path: '/order-extra-ingredient',
-  name: 'Order_extra_ingredients',
-  component: Order_extra_ingredients
-},
-{
-  path: '/editar-pedido-ingrediente-extra/:id',
-  name: 'EditOrderExtraIngredient',
-  component: EditOrderExtraIngredient
-},
-{
-  path: '/add-pedido-ingrediente-extra',
-  name: 'NewOrderExtraIngredient',
-  component: NewOrderExtraIngredient
-},
-{
-  path: '/ingredients',
-  name: 'Ingredient',
-  component: Ingredient
-},
-{
-  path: '/editIngredient/:id',
-  name: 'EditIngredient',
-  component: EditIngredient
-}
+  {
+    path: '/order-extra-ingredient',
+    name: 'Order_extra_ingredients',
+    component: Order_extra_ingredients
+  },
+  {
+    path: '/editar-pedido-ingrediente-extra/:id',
+    name: 'EditOrderExtraIngredient',
+    component: EditOrderExtraIngredient
+  },
+  {
+    path: '/add-pedido-ingrediente-extra',
+    name: 'NewOrderExtraIngredient',
+    component: NewOrderExtraIngredient
+  },
+  {
+    path: '/ingredients',
+    name: 'Ingredient',
+    component: Ingredient
+  },
+  {
+    path: '/editIngredient/:id',
+    name: 'EditIngredient',
+    component: EditIngredient
+  },
+  {
+    path: '/clients',
+    name: 'Clients',
+    component: Clients
+  },
+  {
+    path: '/editar-cliente/:id',
+    name: 'EditClient',
+    component: EditClient
+  },
+  {
+    path: '/add-cliente',
+    name: 'NewClient',
+    component: NewClient
+  },
+  {
+    path: '/employees',
+    name: 'Employees',
+    component: Employees
+  },
+  {
+    path: '/editar-empleado/:id',
+    name: 'EditEmployee',
+    component: EditEmployee
+  },
+  {
+    path: '/add-empleado',
+    name: 'NewEmployee',
+    component: NewEmployee
+  },
+  {
+    path: '/pizzas',
+    name: 'Pizzas',
+    component: Pizzas
+  },
+  {
+    path: '/editar-pizza/:id',
+    name: 'EditPizza',
+    component: EditPizza
+  },
+  {
+    path: '/add-pizza',
+    name: 'NewPizza',
+    component: NewPizza
+  },
+  {
+    path: '/users',
+    name: 'Users',
+    component: Users
+  },
+  {
+    path: '/editar-user/:id',
+    name: 'EditarUser',
+    component: EditUser
+  },
+  {
+    path: '/add-user/',
+    name: 'NewUser',
+    component: NewUser
+  }
 
 ]
 
