@@ -33,6 +33,7 @@ import Users from '../views/Users.vue'
 import NewIngredient from '@/components/Ingredient/NewIngredient.vue'
 import EditUser from '../components/User/EditUser.vue'
 import NewUser from '../components/User/NewUser.vue'
+import Pizza_ingredient from '@/views/pizza_ingredient.vue'
 
 
 const routes = [
@@ -218,6 +219,11 @@ const routes = [
     path: '/add-user/',
     name: 'NewUser',
     component: NewUser
+  },
+  {
+    path: '/pizza-ingredient',
+    name: 'PizzaIngredient',
+    component: Pizza_ingredient
   }
 
 ]
