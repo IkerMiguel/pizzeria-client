@@ -19,6 +19,18 @@ import Order_extra_ingredients from '../views/Order_extra_ingredients.vue'
 import EditOrderExtraIngredient from '../components/Order_extra_ingredient/EditOrderExtraIngredient.vue'
 import NewOrderExtraIngredient from '../components/Order_extra_ingredient/NewOrderExtraIngredient.vue'
 import Ingredient from '@/views/Ingredient.vue'
+import Clients from '../views/Clients.vue'
+import EditClient from '../components/Client/EditClient.vue'  
+import NewClient from '../components/Client/NewClient.vue'
+import Employees from '../views/Employees.vue'
+import EditEmployee from '../components/Employee/EditEmployee.vue'
+import NewEmployee from '../components/Employee/NewEmployee.vue'
+import Pizzas from '../views/Pizzas.vue'
+import EditPizza from '../components/Pizza/EditPizza.vue' 
+import NewPizza from '../components/Pizza/NewPizza.vue'
+import Users from '../views/Users.vue'
+import EditUser from '../components/User/EditUser.vue'
+import NewUser from '../components/User/NewUser.vue'
 
 const routes = [
   {
@@ -134,6 +146,65 @@ const routes = [
   name: 'Ingredient',
   component: Ingredient
 }
+  path: '/clients',
+  name: 'Clients',
+  component: Clients
+},
+{
+  path: '/editar-cliente/:id',
+  name: 'EditClient',
+  component: EditClient
+},
+{
+  path: '/add-cliente',
+  name: 'NewClient',
+  component: NewClient
+},
+ {
+  path: '/employees',
+  name: 'Employees',
+  component: Employees
+  },
+  {
+    path: '/editar-empleado/:id',
+    name: 'EditEmployee',
+    component: EditEmployee
+  },
+  {
+    path: '/add-empleado',
+    name: 'NewEmployee',
+    component: NewEmployee
+  },
+{
+  path: '/pizzas',
+  name: 'Pizzas',
+  component: Pizzas
+},
+{
+  path: '/editar-pizza/:id',
+  name: 'EditPizza',
+  component: EditPizza
+},
+{
+  path: '/add-pizza',
+  name: 'NewPizza',
+  component: NewPizza
+},
+  {
+    path: '/users',
+    name: 'Users',
+    component: Users
+  },
+  {
+    path: '/editar-user/:id',
+    name: 'EditarUser',
+    component: EditUser
+  },
+  {
+    path: '/add-user/',
+    name: 'NewUser',
+    component: NewUser
+  }
 
 ]
 
