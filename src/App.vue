@@ -11,7 +11,7 @@
   <router-link to="/order-extra-ingredient">Pedido Ingrediente Extra</router-link> |
   <router-link to="/Ingredients">Ingredientes</router-link> |
   <br>
-  
+  <router-link to="/pizza-ingredient">Ingrediente para pizza</router-link> |
 </nav>
   <router-view/>
 </template>
