@@ -70,7 +70,7 @@ export default {
       })
     },
     editIngredient(id) {
-      this.$router.push({ name: 'EditIngredient', params: { id: `${id}` } })
+        this.$router.push({ path: `/editIngredient/${id}` });
     },
     newIngredient() {
       this.$router.push({ name: 'NewIngredient' })
