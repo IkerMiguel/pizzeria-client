@@ -85,7 +85,7 @@ export default {
   },
   methods: {
     cancelar() {
-      this.$router.push({ name: 'PizzaIngredientIndex' });
+      this.$router.push({ name: 'pizza_ingredient' });
     },
     async updatePizzaIngredient() {
       try {

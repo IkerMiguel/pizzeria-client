@@ -35,6 +35,7 @@ import EditUser from '../components/User/EditUser.vue'
 import NewUser from '../components/User/NewUser.vue'
 import Pizza_ingredient from '@/views/pizza_ingredient.vue'
 import EditPizzaIngredient from '@/components/Pizza_ingredient/EditPizzaIngredient.vue'
+import NewPizzaIngredient from '@/components/Pizza_ingredient/NewPizzaIngredient.vue'
 
 
 const routes = [
@@ -222,16 +223,20 @@ const routes = [
     component: NewUser
   },
   {
-    path: '/pizza-ingredient',
-    name: 'PizzaIngredient',
-    component: Pizza_ingredient
-  },
-  {
-    name: 'EditPizzaIngredient', 
-    path: '/edit-pizza-ingredient/:id',
-    component: EditPizzaIngredient  
-  }
-
+  path: '/pizza-ingredients',
+  name: 'NewPizzaIngredient',
+  component: NewPizzaIngredient
+},
+{
+  path: '/pizza-ingredients',
+  name: 'PizzaIngredient',
+  component: Pizza_ingredient
+},
+{
+  path: '/edit-pizza-ingredient/:id',
+  name: 'EditPizzaIngredient',
+  component: EditPizzaIngredient
+}
 ]
 
 const router = createRouter({
